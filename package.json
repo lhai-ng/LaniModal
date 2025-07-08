@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "minify": "terser lanimodal.js -o lanimodal.min.js && csso lanimodal.css -o lanimodal.min.css"
+  },
+  "dependencies": {
+    "csso-cli": "^4.0.2",
+    "terser": "^5.43.1"
+  }
+}
