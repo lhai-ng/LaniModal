@@ -1,109 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F8 Modal</title>
-</head>
-<style>
-    * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    }
+    <head>
+        <meta charset="UTF-8" />
+        <title>LaniModal.js: A 2kB Vanilla JavaScript Modal Library</title>
+        <meta
+            name="description"
+            content="LaniModal.js is a lightweight and user-friendly modal library written in pure JavaScript. It is designed for great user experience (2kB, no dependencies, fully customizable with CSS)."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="./assets/highlight/styles.css"
+            media="all"
+        />
+        <link rel="stylesheet" href="./assets/styles.css" media="all" />
+        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <h1 class="header__title">LaniModal.js</h1>
+                <div class="header__tagline">
+                    A lightweight and simple modal library built with pure
+                    JavaScript.
+                </div>
+                <a
+                    href="https://github.com/lhai-ng/lanimodal"
+                    class="header__github"
+                    target="_blank"
+                    ><img src="./assets/github.svg" alt="View on GitHub"
+                /></a>
+            </div>
+        </header>
+        <!-- /HEADER -->
 
-    html {
-        font-size: 62.5%;
-    }
+        <!-- CONTAINER -->
+        <div class="container content">
+            <h2 data-bullet="1" class="title" id="try-it-out">Try It Out</h2>
+            <p>
+                LaniModal is a lightweight <strong>modal library</strong> built with
+                pure JavaScript. (<a
+                    href="https://github.com/lhai-ng/lanimodal"
+                    >Source code available on GitHub</a
+                >)
+            </p>
 
-    body {
-        font-size: 1.6rem;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
+            <ul>
+                <li>No dependencies</li>
+                <li>Fully customizable with CSS</li>
+                <li>Supports CSS transitions</li>
+                <li>Simple and intuitive API</li>
+                <li>No extra files needed</li>
+                <li>Optimized for user experience</li>
+            </ul>
 
-    button {
-        border: none;
-        outline: none;
-        background: transparent;
-        cursor: pointer;
-    }
+            <p>Here are some examples of how to use LaniModal:</p>
 
-    main {
-        margin: 20px;
-    }
+            <button class="btn btn--primary btn-demo js-lanimodal-modal-1">
+                Basic Modal
+            </button>
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-2">
+                Modal with Buttons
+            </button>
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-3">
+                Large Content Modal
+            </button>
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-5">
+                Footer-Only Close Modal
+            </button>
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-6">
+                Persistent Modal (Stays in DOM)
+            </button>
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-7">
+                Multiple Modals
+            </button>
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-4">
+                YouTube Embed Modal
+            </button>
 
-    .btn {
-        border: 2px solid #ccc;
-        border-radius: 8px;
-        padding: 8px 20px;
-        font-weight: 600;
-    }
+            <h2 data-bullet="2" class="title" id="installation">
+                Installation
+            </h2>
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th class="w60">Steps</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>Direct Download</td>
+                    <td>
+                        <a
+                            href="https://github.com/lhai-ng/lanimodal/archive/master.zip"
+                            title="Download LaniModal"
+                        >
+                            Download ZIP
+                        </a>
+                        <p>
+                            Simply extract the ZIP file and use the
+                            <code>lanimodal.min.js</code> and
+                            <code>lanimodal.min.css</code> files in your project.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <p>
+                LaniModal provides a small CSS file that you can include directly
+                via a CDN link. This makes it easy to integrate into your
+                project and customize as needed.
+            </p>
 
-    .lanimodal__btn {
-        padding: 8px 20px;
-        color: white;
-        background: gray;
-    }
+            <p>Include the LaniModal JavaScript file in your project:</p>
 
-    .lanimodal__btn--primary {
-        padding: 8px 20px;
-        color: white;
-        background: green;
-    }
-</style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lhai-ng/LaniModal/lanimodal.min.css">
-<body>
-    <main>
-        <button class="btn" id="open-modal-1">Open Modal 1</button>
-        <button class="btn" id="open-modal-2">Open Modal 2</button>
-        <button class="btn" id="open-modal-3">Open Modal 3</button>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos rem doloremque magnam assumenda nostrum, labore repellat laudantium incidunt corporis accusamus voluptates rerum provident quidem ut cupiditate aperiam ipsum eum vero? Doloribus dolores exercitationem modi velit commodi quasi blanditiis asperiores quaerat sit voluptate minus, possimus perferendis cum omnis molestiae est ipsa illo ea ipsum. Qui odit impedit animi laboriosam voluptatem magni, laudantium tempora explicabo fugiat quos nisi. Aliquid id quos excepturi eligendi quod, veritatis labore a modi cum eveniet commodi laboriosam nemo tempore error officiis cupiditate harum veniam laudantium numquam pariatur nam maxime? Consectetur commodi nisi soluta doloribus fugit quasi, reprehenderit beatae fugiat labore quidem ex ea in, iste nostrum autem recusandae nam necessitatibus quas. Odio debitis qui aliquid omnis corrupti nihil aut, voluptate obcaecati natus iure illum enim consequuntur impedit possimus velit corporis voluptatum iste fugiat assumenda amet quod exercitationem delectus? Enim error adipisci, quia debitis rerum accusamus possimus! Debitis eveniet nemo, velit quia sequi ea enim deleniti atque, fugit fuga excepturi voluptatum earum illo natus repudiandae neque aut modi cumque! Neque eaque repellendus quisquam quia architecto omnis cupiditate, labore molestiae non? Culpa omnis architecto dolores mollitia quas provident dicta quia, nam quisquam maiores eos. Recusandae maiores qui nesciunt, odio animi ipsum voluptatibus laboriosam rerum consectetur laborum provident, reiciendis autem inventore optio voluptatum et enim unde cum quas aspernatur? Rerum magni rem fuga facilis dolorum maxime ipsa delectus consectetur temporibus. Debitis, illo atque? Distinctio expedita architecto ea quaerat delectus placeat praesentium ut exercitationem laudantium. Sunt officiis incidunt quod, deserunt eos debitis praesentium qui, harum ullam illum quae voluptate at! Quisquam fuga natus, corrupti animi ratione quod iure reprehenderit eius facilis maxime earum, suscipit ducimus cum dicta vero dolores dolore blanditiis nulla minus assumenda, ipsum a et? Saepe quis ea suscipit maxime debitis eum molestias repellat magnam laborum cumque esse, nihil illum nemo omnis minima veniam. Facere quibusdam consequuntur unde sunt accusantium labore assumenda, ipsam soluta, quidem quia obcaecati? Ratione saepe asperiores, ducimus magni deleniti nesciunt in dolore cumque ea neque magnam repellat incidunt temporibus esse consequuntur unde iste facilis tempore impedit aspernatur delectus provident consequatur harum? A sunt repudiandae corrupti fugiat delectus dolore ipsa fuga ratione distinctio quis nostrum iusto id temporibus accusamus rem voluptate, vero quasi voluptates repellat maiores! Harum ut eaque, accusamus inventore non eum. Dolor voluptatem fugit aspernatur fugiat fuga deleniti minima! Itaque minus, voluptatem repellat expedita eaque quas iusto eligendi aspernatur accusamus assumenda quisquam, enim veritatis quis pariatur debitis nesciunt natus laborum maiores quos quo nulla tenetur alias perspiciatis sapiente! Aperiam officia vel vitae officiis animi similique voluptates possimus error magni ullam libero, beatae expedita! Quo, reiciendis labore architecto harum sapiente blanditiis repudiandae unde veniam nam voluptatum reprehenderit suscipit distinctio quibusdam ducimus sint? Soluta enim, a minus necessitatibus fugit rerum iste est repellendus non, repudiandae sunt consectetur quae reiciendis. Cumque aut, dolores ratione nam quo nobis consequuntur at corporis, quidem sunt porro veritatis, debitis esse quod quia repellendus quasi voluptates? Dignissimos maxime eaque voluptatum quo reiciendis aliquam dolores molestias, tenetur sunt pariatur beatae sequi veritatis. Similique.</p>
-    </main>
-    <template id="modal-1">
-        <button class="btn" onclick="modal2.open()">Open Modal 2</button>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum quidem non provident neque deleniti vero eos praesentium aperiam corrupti nihil. Sapiente suscipit illo amet rem magnam non in nesciunt pariatur! Magnam iusto, aperiam sit nostrum expedita perspiciatis molestiae suscipit amet, consequuntur quibusdam totam, dolores rem quos? Rerum voluptatibus eveniet earum ipsum dolorem similique sequi sapiente est cupiditate necessitatibus soluta odio veritatis eius explicabo ipsa qui nihil eaque nisi, voluptatem, voluptas, architecto inventore placeat. Tempore labore facere earum nihil veritatis beatae consequatur facilis, odio hic? Laudantium quidem quae assumenda mollitia at animi, possimus eaque laborum impedit fuga magni distinctio, praesentium quam atque eius doloremque beatae, vero hic aut! Voluptates, magni nam, laboriosam quae tenetur eligendi, odit aliquid sequi eaque molestiae magnam ex voluptas facilis neque ipsa fugit deserunt vero non esse eum qui dolores ad! Sequi aspernatur cumque earum nesciunt expedita quas repellendus neque assumenda dolor iusto, eaque maiores quam fuga, repudiandae corrupti deleniti architecto accusamus labore consequatur quia a distinctio tenetur. Neque accusamus reprehenderit sunt sequi temporibus a error quaerat repellendus. Quibusdam eveniet similique inventore qui reprehenderit, maxime porro quisquam officiis praesentium, ipsam impedit mollitia recusandae vero neque, corporis nemo ea molestiae? Cum ipsam ipsum incidunt velit temporibus fugiat dolor, vitae nisi quaerat autem necessitatibus totam impedit itaque animi ipsa, architecto amet inventore. Et reprehenderit amet voluptas aliquid eveniet ipsa nihil, consectetur dignissimos id dolorem quod tempora qui, eius doloribus corporis. Recusandae quod dicta deserunt, blanditiis, assumenda excepturi aperiam veritatis sunt distinctio repellendus dolor soluta iusto officia. Inventore, ex aspernatur totam rem ducimus distinctio ipsa quidem. Quia laudantium quibusdam quasi suscipit eos dignissimos similique nisi. Animi perspiciatis commodi exercitationem quam, possimus eveniet ducimus impedit fugiat sint, omnis cumque facere, nostrum fugit. Molestiae aperiam doloribus reprehenderit neque! Molestiae suscipit odit nihil nisi rem perferendis sed incidunt quos doloremque hic expedita provident neque voluptatibus illo a quas voluptas illum aut, eveniet deleniti assumenda impedit commodi! Veritatis deleniti est pariatur, nesciunt omnis unde a numquam optio, quisquam, laborum explicabo dolores earum in reprehenderit? Aliquid eveniet distinctio recusandae aut earum maiores modi aperiam similique vero doloremque, voluptas velit nesciunt vitae amet saepe quae porro veritatis quos! Eaque consectetur alias repudiandae dolore minus a commodi vero voluptate recusandae molestiae mollitia adipisci impedit, deleniti consequuntur ipsam quae magni et dolores delectus corrupti sapiente assumenda cumque veniam aperiam. Aliquid, nisi. Cumque illum distinctio culpa eaque, exercitationem tempore ipsum ea. Alias nostrum esse quia maiores commodi a aliquid, fuga saepe, voluptas dolorum labore iusto asperiores aut? Quas pariatur amet accusamus ipsum nemo perspiciatis ullam a. Qui praesentium minima officiis a, ratione facere? Illo, aperiam. Atque ex illo ullam voluptatem amet provident ipsa qui excepturi sequi maxime voluptates labore, culpa perspiciatis accusamus quos animi esse deserunt cum blanditiis repudiandae dicta a sed nostrum quia. Reiciendis eveniet voluptas consectetur ex quae quam hic facilis ipsum itaque eius totam consequatur recusandae inventore dolore, eos necessitatibus odio culpa molestias, minus iste magnam nesciunt expedita esse. Est quam inventore rerum dolorum quidem, non aperiam odit accusantium cumque delectus ducimus impedit fugiat labore soluta.</p>
-    </template>
+            <pre
+                class="html"
+            ><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/lhai-ng/LaniModal/lanimodal.min.js&quot;&gt;&lt;/script&gt;</code></pre>
 
-    <template id="modal-2">
-        <button class="btn" onclick="modal3.open()">Open Modal 3</button>
-        <h1>Login form</h1>
-        <form action="" id="login-form">
-            <input type="email" placeholder="Enter your email" id="email">
-            <input type="password" placeholder="Enter your password" id="password">
-            <button type="submit">Login</button>
-        </form>
-    </template>
+            <p>Optionally, include the LaniModal CSS file for default styling:</p>
 
-    <template id="modal-3">
-        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus, non!</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum ea distinctio odio sunt accusantium optio? Consequuntur expedita a, nam quisquam eius placeat. Aliquid omnis, ullam exercitationem adipisci tempore ea maiores nostrum natus laboriosam necessitatibus labore, quisquam explicabo vero ipsum. Similique delectus nemo odio necessitatibus nam doloremque ex nostrum beatae tempore voluptas porro adipisci enim libero voluptatem reprehenderit ipsa ratione laudantium, quisquam perferendis illum pariatur! Voluptatibus animi voluptate culpa delectus, rem qui nemo blanditiis iusto dolorem eveniet quo cum vitae quis dignissimos neque quos repellat excepturi corrupti pariatur, beatae autem iste quam asperiores obcaecati? Sit rem perspiciatis minus, velit atque architecto!</p>
-    </template>
-   <script src="https://cdn.jsdelivr.net/gh/lhai-ng/LaniModal/lanimodal.min.js"></script>
-   <script>
-        const button1 = document.querySelector('#open-modal-1');
-        const modal1 = new LaniModal({
-            templateId: 'modal-1',
-            destroyOnClose: false,
-        });
-        button1.onclick = () => {
-            modal1.open();
-        }
-        const button2 = document.querySelector('#open-modal-2');
-        const modal2 = new LaniModal({
-            templateId: 'modal-2',
-            destroyOnClose: false,
-        });
-        button2.onclick = () => {
-            modal2.open();
-        }
-        const button3 = document.querySelector('#open-modal-3');
-        const modal3 = new LaniModal({
-            templateId: 'modal-3',
-            destroyOnClose: false,
-        });
-        button3.onclick = () => {
-            modal3.open();
-        }
-   </script>
-</body>
+            <pre class="html"><code>&lt;link
+    rel=&quot;stylesheet&quot;
+    href=&quot;https://cdn.jsdelivr.net/gh/lhai-ng/LaniModal/lanimodal.min.css&quot;
+&gt;</code></pre>
+
+            <p>
+                You can explore the list of CSS classes used by LaniModal in the
+                <a href="#styling">Styling</a> section to easily customize them
+                as needed.
+            </p>
+
+            <h2 data-bullet="3" class="title" id="usage">Usage</h2>
+            <pre class="javascript"><code>// Initialize a new modal
+const modal = new LaniModal({
+    content: '&lt;h1&gt;This is content&lt;/h1&gt;',
+    // templateId: 'my-modal-template',
+    footer: true,
+    destroyOnClose: false,
+    closeMethods: ['overlay', 'button', 'escape'],
+    cssClass: ['custom-class-1', 'custom-class-2'],
+    onOpen: function() {
+        console.log('Modal opened');
+    },
+    onClose: function() {
+        console.log('Modal closed');
+    },
+});
+
+// Set modal content
+modal.setContent('&lt;h1&gt;This is new content&lt;/h1&gt;');
+
+// Add footer buttons
+modal.addFooterBtn('Cancel', 'btn btn--default', function(e) {
+    modal.close();
+});
+
+modal.addFooterBtn('Confirm', 'btn btn--primary', function(e) {
+    modal.close();
+});
+
+// Open the modal
+modal.open();
+
+// Close the modal
+modal.close();</code></pre>
+
+            <p>
+                If you use <code>templateId</code>, ensure that a
+                <code>&lt;template&gt;</code> element with the corresponding
+                <code>id</code> exists in your HTML. Below is an example:
+            </p>
+
+            <pre class="html">
+<code>&lt;template id="my-modal-template"&gt;
+    &lt;div&gt;
+        &lt;h1&gt;This is modal content&lt;/h1&gt;
+        &lt;p&gt;You can add any HTML here.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+</code>
+</pre>
+            <p>
+                <strong>Note:</strong> When using <code>templateId</code>, do
+                not provide <code>content</code>. If both are specified,
+                <code>content</code> will take precedence, and
+                <code>templateId</code> will be ignored.
+            </p>
+
+            <h2 data-bullet="4" class="title" id="options">Options</h2>
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Type</th>
+                        <th class="w60">Description</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>content, templateId</td>
+                    <td>string</td>
+                    <td>
+                        One of <code>content</code> or
+                        <code>templateId</code> is required to set the modal
+                        content. <code>content</code> accepts an HTML string,
+                        while <code>templateId</code> specifies the ID of a
+                        template element. If both are provided,
+                        <code>content</code> will take precedence.
+                    </td>
+                </tr>
+                <tr>
+                    <td>footer</td>
+                    <td>boolean</td>
+                    <td>
+                        Shows a footer in the modal (default:
+                        <code>false</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>destroyOnClose</td>
+                    <td>boolean</td>
+                    <td>
+                        Decides whether the modal is removed from the DOM upon
+                        closing (default: <code>true</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>closeMethods</td>
+                    <td>array</td>
+                    <td>
+                        Defines methods to close the modal (default:
+                        <code>['overlay', 'button', 'escape']</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>onOpen</td>
+                    <td>function</td>
+                    <td>
+                        Callback function executed when the modal opens (after
+                        transition ends) (default: <code>undefined</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>onClose</td>
+                    <td>function</td>
+                    <td>
+                        Callback function executed when the modal closes
+                        (default: <code>undefined</code>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>cssClass</td>
+                    <td>array</td>
+                    <td>
+                        Custom CSS classes applied to the modal container
+                        (default: <code>[]</code>)
+                    </td>
+                </tr>
+            </table>
+
+            <!-- Styling section -->
+            <h2 data-bullet="5" class="title" id="styling">Styling</h2>
+            <p>
+                LaniModal styles are defined in CSS, with some positioning handled
+                by JavaScript. You can fully customize it to meet your design
+                requirements.
+            </p>
+
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Class Name</th>
+                        <th style="width: 70%">Description/Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>.lanimodal</code></td>
+                        <td>
+                            Styles the backdrop overlay for the modal. Handles
+                            positioning, centering the modal, and applying a
+                            semi-transparent background.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.lanimodal--show</code></td>
+                        <td>
+                            Applied when the modal is visible. Controls the
+                            visibility and opacity of the backdrop.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.lanimodal__container</code></td>
+                        <td>
+                            Styles the modal container, including its size,
+                            padding, border-radius, and transform animations for
+                            scaling in/out.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.lanimodal__close</code></td>
+                        <td>
+                            Styles the close button inside the modal, including
+                            its size, position, and hover effects.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.lanimodal__content</code></td>
+                        <td>
+                            Handles the modal's main content area, including
+                            scrollable behavior with a maximum height.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.lanimodal__footer</code></td>
+                        <td>
+                            Styles the modal footer, aligning buttons to the
+                            right and adding spacing between them.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><code>.lanimodal--no-scroll</code></td>
+                        <td>
+                            Disables scrolling on the body when the modal is
+                            open.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+                For more details, you can view the full CSS file directly here:
+                <a
+                    href="https://github.com/lhai-ng/lanimodal/blob/main/src/lanimodal.css"
+                    target="_blank"
+                    >lanimodal.css</a
+                >.
+            </p>
+
+            <!-- API section -->
+            <h2 data-bullet="6" class="title" id="api">API</h2>
+            <table class="methods">
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th class="w60">Description</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>open()</td>
+                    <td>
+                        Opens the modal and triggers the
+                        <code>onOpen</code> callback.
+                    </td>
+                </tr>
+                <tr>
+                    <td>close()</td>
+                    <td>
+                        Closes the modal and triggers the
+                        <code>onClose</code> callback.
+                    </td>
+                </tr>
+                <tr>
+                    <td>setContent(content)</td>
+                    <td>Updates the modal content</td>
+                </tr>
+                <tr>
+                    <td>setFooterContent(content)</td>
+                    <td>Updates the footer content</td>
+                </tr>
+                <tr>
+                    <td>addFooterBtn(label, cssClass, callback)</td>
+                    <td>
+                        Adds a button to the footer with a callback function
+                    </td>
+                </tr>
+                <tr>
+                    <td>destroy()</td>
+                    <td>Removes the modal and unbinds all events</td>
+                </tr>
+            </table>
+
+            <footer class="footer">
+                <p>
+                    This is a small project included in the "Practice with DOM"
+                    section of the JavaScript Pro course.
+                </p>
+                <p>
+                    Learn more at
+                    <a
+                        href="https://fullstack.edu.vn/landing/javascript"
+                        target="_blank"
+                    >
+                        JavaScript Pro</a
+                    >.
+                </p>
+            </footer>
+        </div>
+        <!-- /CONTAINER -->
+
+        <script src="./assets/highlight/highlight.js"></script>
+        <script>
+            hljs.initHighlightingOnLoad();
+        </script>
+    </body>
 </html>
