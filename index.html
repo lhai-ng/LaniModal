@@ -14,6 +14,7 @@
             media="all"
         />
         <link rel="stylesheet" href="./assets/styles.css" media="all" />
+        <link rel="stylesheet" href="src/lanimodal.css">
         <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     </head>
     <body>
@@ -399,9 +400,20 @@ modal.close();</code></pre>
         </div>
         <!-- /CONTAINER -->
 
+        <template id="modal-1">
+            <h1>Template Modal 1</h1>
+        </template>
         <script src="./assets/highlight/highlight.js"></script>
+        <script src="src/lanimodal.js"></script>
         <script>
+            // Hightlight code
             hljs.initHighlightingOnLoad();
+            
+            // Modal samples
+            const modal1 = new LaniModal({
+                content: '<h1>Hello</h1>',
+                templateId: 'modal-1',
+            });
         </script>
     </body>
 </html>
