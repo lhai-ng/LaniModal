@@ -10,8 +10,6 @@ function LaniModal(options = {}) {
     }, options)
     this.template = document.querySelector(`#${this.opt.templateId}`);
     
-    if (!this.template) return console.error(`#${this.opt.templateId} does not exist!`);
-
     const {closeMethods} = this.opt;
     this._allowButtonClose = closeMethods.includes('button');
     this._allowBackdropClose = closeMethods.includes('overlay');
@@ -23,7 +21,12 @@ function LaniModal(options = {}) {
 }
 
 LaniModal.prototype._build = function() {
-    const content = this.template.content.cloneNode(true);
+    let content = document.createElement('div');
+    if (this.opt.content) {
+        content.innerHTML = this.opt.content;
+    } else {
+        content = this.template.content.cloneNode(true);
+    }
 
     // Create modal elements
     this._backdrop = document.createElement('div');
