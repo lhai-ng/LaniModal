@@ -1,6 +1,6 @@
 
 
-.lanimodal__backdrop {
+.lanimodal {
     position: fixed;
     inset: 0;
     display: flex;
@@ -11,6 +11,7 @@
     visibility: hidden;
     transition:  opacity, visibility;
     transition-duration: 300ms;
+    z-index: 9999;
 }
 
 .lanimodal--show {
@@ -24,7 +25,7 @@
     background: #fff;
     width: min(600px, 90%);
     border-radius: 10px;
-    padding: 28px 28px 0;
+    padding: 28px;
     transform: scale(0);
     transition: transform 300ms;
 }
@@ -43,6 +44,9 @@
     color: #666;
     background:  #ebebeb;
     font-size: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .lanimodal__content {
@@ -55,7 +59,7 @@
 }
 
 .lanimodal__footer {
-    padding: 20px 0;
+    padding-top: 20px;
     display: flex;
     justify-content: flex-end;
     gap: 8px;

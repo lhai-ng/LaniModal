@@ -21,6 +21,8 @@ function LaniModal(options = {}) {
         closeMethods: ['button', 'overlay', 'escape'],
         cssClass: [],
         footer: false,
+        enableScrollLock: true,
+        scrollLockTarget: () => document.body,
     }, options)
     
     this.content = this.opt.content;
@@ -43,7 +45,7 @@ LaniModal.prototype._build = function() {
 
     // Create modal elements
     this._backdrop = document.createElement('div');
-    this._backdrop.className = 'lanimodal__backdrop';
+    this._backdrop.className = 'lanimodal';
 
     const container = document.createElement('div');
     container.className = 'lanimodal__container';
@@ -92,8 +94,8 @@ LaniModal.prototype.setContent = function(content) {
     }
 };
 
-LaniModal.prototype.setFooterContent = function(html) {
-    this._footerContent = html;
+LaniModal.prototype.setFooterContent = function(content) {
+    this._footerContent = content;
     this._renderFooterContent();
 }
 
@@ -154,10 +156,26 @@ LaniModal.prototype.open = function() {
     this._onTransitionEnd(this.opt.onOpen);
         
     // Disable Scrolling
-    document.body.classList.add('lanimodal--no-scroll');
-    document.body.style.paddingRight = this._getScrollbarWidth() + 'px';
+    if (this.opt.enableScrollLock) {
+        const target = this.opt.scrollLockTarget();
 
+        if (this._hasScrollbar(target)) {
+            target.classList.add('lanimodal--no-scroll');
+
+            const targetPaddingRight = parseInt(getComputedStyle(target).paddingRight);
+            target.style.paddingRight = targetPaddingRight + this._getScrollbarWidth() + 'px';
+        }
+    }
+    
     return this._backdrop;
+}
+
+LaniModal.prototype._hasScrollbar = (target) => {
+    if ([document.documentElement, document.body].includes(target)) {
+        return document.documentElement.scrollHeight > document.documentElement.clientHeight ||
+        document.body.scrollHeight > document.body.clientHeight ;
+    }
+    return target.scrollHeight > target.clientHeight;
 }
 
 LaniModal.prototype._handleEscapeKey = function(e) {
@@ -192,9 +210,13 @@ LaniModal.prototype.close = function(destroy = this.opt.destroyOnClose)  {
         }
 
         // Enable Scrolling
-        if (!LaniModal.elements.length) {
-            document.body.classList.remove('lanimodal--no-scroll');
-            document.body.style.paddingRight = '';
+        if (!LaniModal.elements.length && this.opt.enableScrollLock) {
+            const target = this.opt.scrollLockTarget();
+
+            if (this._hasScrollbar(target)) {
+                target.classList.remove('lanimodal--no-scroll');
+                target.style.paddingRight = '';
+            }
         }
     });
 }
