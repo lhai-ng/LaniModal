@@ -156,7 +156,7 @@ LaniModal.prototype.open = function() {
     this._onTransitionEnd(this.opt.onOpen);
         
     // Disable Scrolling
-    if (this.opt.enableScrollLock) {
+    if (LaniModal.elements.length === 1 && this.opt.enableScrollLock) {
         const target = this.opt.scrollLockTarget();
 
         if (this._hasScrollbar(target)) {

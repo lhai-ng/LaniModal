@@ -67,16 +67,16 @@
             <button class="btn btn--secondary btn-demo js-lanimodal-modal-3">
                 Large Content Modal
             </button>
-            <button class="btn btn--secondary btn-demo js-lanimodal-modal-5">
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-4">
                 Footer-Only Close Modal
             </button>
-            <button class="btn btn--secondary btn-demo js-lanimodal-modal-6">
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-5">
                 Persistent Modal (Stays in DOM)
             </button>
-            <button class="btn btn--secondary btn-demo js-lanimodal-modal-7">
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-6">
                 Multiple Modals
             </button>
-            <button class="btn btn--secondary btn-demo js-lanimodal-modal-4">
+            <button class="btn btn--secondary btn-demo js-lanimodal-modal-7">
                 YouTube Embed Modal
             </button>
 
@@ -429,23 +429,116 @@ modal.close();</code></pre>
             hljs.initHighlightingOnLoad();
             
             // Modal samples
+
+            // Basic Modal
             const modal1Btn = document.querySelector(".js-lanimodal-modal-1");
-            
             const modal1 = new LaniModal({
-                enableScrollLock: true,
                 content: `
                     <h1>Basic Modal</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
                 `,
-                scrollLockTarget: () => {
-                    return document.body;
-                }
             })
-
             modal1Btn.onclick = () => {
                 modal1.open();
             }
+
+            // Modal with Buttons
+            const modal2Btn = document.querySelector(".js-lanimodal-modal-2");
+            const modal2 = new LaniModal({
+                content: `
+                    <h1>Modal with Buttons</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                `,
+                footer: true,
+            });
+            modal2.addFooterButton('Bye', 'modal-btn pull-left', () => {
+                modal2.close();
+            });
+            modal2.addFooterButton('Cancel', 'modal-btn primary', () => {
+                modal2.close();
+            });
+            modal2.addFooterButton('Danger', 'modal-btn danger', () => {
+                modal2.close();
+            });
+            modal2Btn.onclick = () => {
+                modal2.open();
+            }
             
+            // Large Content Modal
+            const modal3Btn = document.querySelector(".js-lanimodal-modal-3");
+            const modal3 = new LaniModal({
+                content: `
+                    <h1>Basic Modal</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                `,
+            })
+            modal3Btn.onclick = () => {
+                modal3.open();
+            }
+
+            // Footer-Only Close Modal
+            const modal4Btn = document.querySelector(".js-lanimodal-modal-4");
+            const modal4 = new LaniModal({
+                content: `
+                    <h1>Footer-Only Close Modal</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                `,
+                footer: true,
+                closeMethods: [],
+            })
+            modal4.addFooterButton('Close', 'modal-btn primary', () => {
+                modal4.close();
+            });
+            modal4Btn.onclick = () => {
+                modal4.open();
+            }
+
+            // Persistent Modal
+            const modal5Btn = document.querySelector(".js-lanimodal-modal-5");
+            const modal5 = new LaniModal({
+                content: `
+                    <h1>Persistent Modal</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                `,
+                destroyOnClose: false,
+            })
+            modal5Btn.onclick = () => {
+                modal5.open();
+            }
+
+            // Multiple Modal
+            const modal6Btn = document.querySelector(".js-lanimodal-modal-6");
+            const modal6 = new LaniModal({
+                content: `
+                    <h1>Multiple Modal</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero sunt blanditiis doloremque dignissimos. Blanditiis perspiciatis ipsum sapiente provident nemo deleniti magni architecto quaerat nostrum nulla. Alias porro modi reiciendis illo error pariatur soluta, odio possimus illum exercitationem voluptatum non.</p>
+                    <button class='modal-btn primary' onclick='modal1.open()'>Open Basic Modal</button>
+                `,
+            })
+            modal6Btn.onclick = () => {
+                modal6.open();
+            }
+
+            // YouTube Embed Modal
+            const modal7Btn = document.querySelector(".js-lanimodal-modal-7");
+            const modal7 = new LaniModal({
+                content: `
+                    <h1>YouTube Embed</h1>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/yfG2wmHtlyQ?si=lDQ5QMgnzbm4tYur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                `,
+                destroyOnClose: false,
+            })
+            modal7Btn.onclick = () => {
+                modal7.open();
+            }
         </script>
     </body>
 </html>
